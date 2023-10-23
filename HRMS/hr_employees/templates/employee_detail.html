@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<div class="container">
+	<div>
+		<div>
+			<h2> Employee details </h2>
+		</div>
+		<div>
+			<ul>
+				<li><b>Name: </b> {{ employee.name }} </li>
+				<li><b>Birthday: </b> {{ employee.birthday }} </li>
+				<li><b>Street: </b> {{ employee.city }} </li>
+				<li><b>Phone: </b> {{ employee.phone }} </li>
+				<li><b>Zip: </b> {{ employee.zip_code }} </li>
+				<li><b>Image: </b> {{ employee.imgae }} </li>
+			</ul>
+		</div>
+		<a href="javascript:history.back()" class="btn btn-dark"></a>
+	</div>
+</div>
+{% endblock %}
+

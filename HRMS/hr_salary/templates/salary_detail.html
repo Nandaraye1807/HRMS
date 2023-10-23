@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<div class="container">
+	<div>
+		<div>
+			<h2> Salary details</h2>
+		</div>
+		<div>
+			<ul>
+				<li><b>Name: </b> {{ salary.name }} </li>
+				<li><b>Start Date: </b> {{ salary.start_date }} </li>
+				<li><b>End Date: </b> {{ salary.end_date }} </li>
+				<li><b>Salary: </b> {{ salary.salary }} </li>
+				<li><b>Position: </b> {{ salary.job_id }} </li>
+			</ul>
+		</div>
+		<a href="javascript:history.back()" class="btn btn-dark"> Back </a>
+	</div>
+</div>
+{% endblock %}
+
+

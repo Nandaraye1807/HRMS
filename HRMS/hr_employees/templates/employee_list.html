@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Employees {% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+	<div>
+		<h2>Employees</h2>
+	</div>
+
+	<div style="float: right;">
+		<form method="GET" class="form-inline">
+			<div class="input-group">
+				<input type="search" name="search_query" placeholder="search" class="form-control" required>
+				<select name="search_type" style="margin-left: 10px;" class="search-select">
+					<option value="name" selected>Name</option>
+					<option value="street" selected>Street</option>
+				</select>
+				<div style="margin-left: 10px;">
+					<button type="submit" class="btn btn-primary">Search</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<table class="table table-boardered table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Options</th>
+				<th scope="col">No.</th>
+				<th scope="col">Name</th>
+				<th scope="col">Birthday</th>
+				<th scope="col">Street</th>
+				<th scope="col">City</th>
+				<th scope="col">Phone</th>
+				<th scope="col">Zip</th>
+				<th scope="col">Contract</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			{% for employee in employee_list %}
+			<tr>
+				<td>
+					<a href="{% url 'employee_detail' pk=employee.pk %}"><img src="{% static 'info_ico.png' %}" alt="Details" width="20" height="20"></a>
+					{% if user.is_superuser %}
+						<a href="{% url 'employee_delete' pk=employee.pk %}"><img src="{% static 'del_ico.png' %}" alt="Delete" width="20" height="20"></a>
+						<a href="{% url 'employee_update' pk=employee.pk %}"><img src="{% static 'edit_ico.png' %}" alt="Edit" width="20" height="20"></a>
+					{% endif %}
+				</td>
+
+				<td>{{ forloop.counter }}</td>
+				<td>{{ employee.name }}</td>
+				<td>{{ employee.birthday }}</td>
+				<td>{{ employee.street }}</td>
+				<td>{{ employee.city }}</td>
+				<td>{{ employee.phone }}</td>
+				<td>{{ employee.zip_code }}</td>
+				<td>{{ employee.contraact_id }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<div>
+		<p><b>Options</b></p>
+		<p><img src="{% static 'info_ico.png' %}" alt="Details" width="20" height="20">Employee details</p>
+		{% if user.is_superuser %}
+			<p><img src="{% static 'del_ico.png' %}" alt="Delete" width="20" height="20">Delete employee</p>
+			<p><img src="{% static 'edit_ico.png' %}" alt="Edit" width="20" height="20">Edit employee</p>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock body_block %}

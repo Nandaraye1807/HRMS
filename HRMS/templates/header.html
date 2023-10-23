@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark sticky-top">
+	<a href="navbar-brand" href="#"> Company Management System </a>
+	<div class="navbar-collapse justify-content-end">
+		<ul class="navbar-nav">
+				{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a href="nav-link" href="{% url 
+					'employee_list' %}">Home</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Allowance</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{% url 'allowance_list' %}">Allowance List</a>
+						<a class="dropdown-item" href="{% url 'allowance_create' %}">Add Allowances</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contacts</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{% url 'contact_list' %}">Contacts List</a>
+						<a class="dropdown-item" href="{% url 'contact_create' %}">Add Contacts</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employees</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{% url 'employee_list' %}">Employee List</a>
+						<a class="dropdown-item" href="{% url 'employee_create' %}">Add Employees</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jobs</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{% url 'job_list' %}">Jobs List</a>
+						<a class="dropdown-item" href="{% url 'job_create' %}">Add Jobs</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salaries</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{% url 'salary_list' %}">Salaries List</a>
+						<a class="dropdown-item" href="{% url 'salary_create' %}">Add Salaries</a>
+					</div>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link " href="{% url 'logout' %}">Logout</a>
+				</li>
+	
+				{% endif %}
+		</ul>		
+	</div>
+</nav>

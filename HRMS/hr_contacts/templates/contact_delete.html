@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+<div class="container">
+	<h2> Do you want to delete contract ?</h2>
+	<h4> Details </h4>
+	<div>
+		<ul>
+			<li><b>Name: </b> {{ contact.name }} </li>
+			<li><b>Start Date: </b> {{ contact.start_date }} </li>
+			<li><b>End Date: </b> {{ contact.end_date }} </li>
+			<li><b>Salary: </b> {{ contact.salary }} </li>
+			<li><b>Position: </b> {{ contact.job_id }} </li>
+		</ul>
+	</div>
+
+	<form method="POST">
+		{% csrf_token %}
+		<a href="javascript:history.back()" class="btn btn-dark"> Back </a>
+		<input type="submit" value="Delete" class="btn btn-danger">
+	</form>
+</div>
+
+{% endblock %}
+
+
+
+

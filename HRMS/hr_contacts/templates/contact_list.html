@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Contracts {% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+	<div>
+		<h2>Contacts</h2>
+	</div>
+
+	<div style="float: right;">
+		<form method="GET" class="form-inline">
+			<div class="input-group">
+				<input type="search" name="search_query" placeholder="search" class="form-control" required>
+				<select name="search_type" style="margin-left:10px;" class="search-select">
+					<option value="name" selected>Name</option>
+					<option value="street" selected>Salary</option>
+				</select>
+				<div style="margin-left:10px;">
+					<button type="submit" class="btn btn-primary">Search</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<table class="table table-bordered table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Options</th>
+				<th scope="col">No.</th>
+				<th scope="col">Name</th>
+				<th scope="col">Start Date</th>
+				<th scope="col">End Date</th>
+				<th scope="col">Salary</th>
+				<th scope="col">Position</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for contact in contacts_list %}
+			<tr>
+				<td>
+					<a href="{% url 'contact_detail' pk=contact.pk %}"><img src="{% static 'info_ico.png' %}" alt="Details" width="20" height="20"></a>
+					{% if user.is_superuser %}
+						<a href="{% url 'contact_delete' pk=contact.pk %}"><img src="{% static 'del_ico.png' %}" alt="Delete" width="20" height="20"></a>
+						<a href="{% url 'contact_update' pk=contact.pk %}"><img src="{% static 'edit_ico.png' %}" alt="Edit" width="20" height="20"></a>
+					{% endif %}
+				</td>
+
+				<td>{{ forloop.counter }}</td>
+				<td>{{ contact.name }}</td>
+				<td>{{ contact.start_date }}</td>
+				<td>{{ contact.end_date }}</td>
+				<td>{{ contact.salary }}</td>
+				<td>{{ contact.job_id.all|join:", " }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<div>
+		<p><b>Options:</b></p>
+		<p><img src="{% static 'info_ico.png' %}"
+			alt="Details" width="20" height="20">Contact details </p>
+			{% if user.is_superuser %}
+				<p><img src="{% static 'del_ico.png' %}" alt="Delete" width="20" height="20">Delete contact</p>
+				<p><img src="{% static 'edit_ico.png' %}" alt="Edit" width="20" height="20">Edit contact</p>
+			{% endif %}
+	</div>
+</div>
+
+{% endblock body_block %}
+
